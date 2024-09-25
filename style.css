@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(188, 49, 49);
+    background: #910002;
     display: flex;
     align-items: center;
     text-align: center;
@@ -28,7 +28,7 @@ body {
 
 
 /*Permet de faire un changement "d'item' dans le panel*/
-.actionActive{
+.actionActive {
     font-size: 25px;
     opacity: 1;
     color: aqua;
@@ -41,7 +41,7 @@ body {
 
 
 
-.timer{
+.timer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,15 +58,20 @@ body {
     height: 21rem;
     border-radius: 50%;
     background-color: aqua;
+
+    border: 1rem solid white;
+    -webkit-box-shadow: 0px 10px 13px -7px #ffffff68, 0px 0px 15px 10px rgba(255, 255, 255, 0.35);
+    box-shadow: 0px 10px 13px -7px #ffffff68, 0px 0px 15px 10px rgba(255, 255, 255, 0.35);
+
 }
 
-.temps{
+.temps {
     position: relative;
     display: flex;
     flex-direction: row;
 }
 
-.temps p{
+.temps p {
     font-size: 5rem;
 }
 
@@ -77,4 +82,3 @@ h1 {
     font-size: 5em;
     color: white;
 }
-
