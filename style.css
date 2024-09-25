@@ -1,16 +1,44 @@
 body {
     background-color: rgb(188, 49, 49);
+    display: flex;
+    align-items: center;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-h1 {
-    padding: 0%;
-    margin-top: 10px;
-    font-size: 5em;
-    color: white;
+
+.pomodoro {
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
+
+.action {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10rem;
+    opacity: .5;
+    font-size: 20px;
+}
+
+
+/*Permet de faire un changement "d'item' dans le panel*/
+.actionActive{
+    font-size: 25px;
+    opacity: 1;
+    color: aqua;
+}
+
+/*Pour modifier le background d'une autre couleur lorsque l'on passe en pause*/
+.enPause {
+    background-color: green;
+}
+
 
 
 .timer{
@@ -33,7 +61,20 @@ h1 {
 }
 
 .temps{
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
 }
+
+.temps p{
+    font-size: 5rem;
+}
+
+
+h1 {
+    padding: 0%;
+    margin-top: 10px;
+    font-size: 5em;
+    color: white;
+}
+
