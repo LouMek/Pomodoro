@@ -12,26 +12,28 @@ h1 {
     color: white;
 }
 
-.action {
-    background-color: white;
-    margin-left: 40%;
-    margin-right: 40%;
+
+.timer{
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
 }
 
-.action p {
-    margin: 0; 
-    padding: 0 1%; 
+.cercle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 21rem;
+    height: 21rem;
+    border-radius: 50%;
+    background-color: aqua;
 }
 
-.lancer {
-    padding: 0%;
-    color: black;
-    background-color: rgb(188, 49, 49);
-    border: #f8f8f8 5px solid;
-    cursor: pointer;
-    width: 10em;
-    height: 10em;
-    border-radius: 50%
+.temps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

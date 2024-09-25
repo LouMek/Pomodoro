@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1> Timer Pomodoro </h1>
-        <div class="action">
-            <p class="travail">Travail</p>
-            <p class="pause">Pause</p>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pomodoro</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1> Timer Pomodoro </h1>
+    <div class="action">
+        <p class="travail">Travail</p>
+        <p class="pause">Pause</p>
+    </div>
+    <div classe="timer">
+        <div class="cercle">
+            <div class="temps">
+                <p id="minutes">25</p>
+                <p>:</p>
+                <p id="secondes">10</p>
+            </div>
         </div>
-        <button class="lancer">Play</button>
-        <script src="script.js" async defer></script>
-    </body>
+    </div>
+    <button id="lancer">Play</button>
+    <script src="script.js" async defer></script>
+</body>
+
 </html>
