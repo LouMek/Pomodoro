@@ -1,5 +1,6 @@
 body {
-    background: #a61510;
+    background: #910002;
+
     display: flex;
     align-items: center;
     text-align: center;
@@ -17,27 +18,26 @@ body {
 }
 
 .action {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    background-color: white;
     text-align: center;
-    padding: 1rem;
-    border-radius: 10rem;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 25px;
     opacity: .5;
     font-size: 20px;
+
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.21);
+    backdrop-filter: blur(6.8px);
+    -webkit-backdrop-filter: blur(6.8px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }
 
-
-/*Permet de faire un changement "d'item' dans le panel*/
-.actionActive {
-    font-size: 25px;
-    opacity: 1;
-    color: aqua;
-}
-
-/*Pour modifier le background d'une autre couleur lorsque l'on passe en pause*/
-.enPause {
-    background-color: green;
-}
 
 
 
@@ -57,11 +57,12 @@ body {
     width: 21rem;
     height: 21rem;
     border-radius: 50%;
-    background-color: #ab1510;
-    
+    background-color: #910002;
+
     border: 1px solid white;
-    -webkit-box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255, 255, 255, 0.5); 
-    box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255,255,255,0.5);}
+    -webkit-box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+}
 
 .temps {
     position: relative;
@@ -71,13 +72,104 @@ body {
 
 .temps p {
     font-size: 5rem;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
     color: white;
 }
 
 
 h1 {
-    padding: 0%;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
     margin-top: 10px;
     font-size: 5em;
     color: white;
+}
+
+
+
+
+
+/*Pour modifier le background d'une autre couleur lorsque l'on passe en pause*/
+
+.versLaPause {
+    background: linear-gradient(180deg, #910002, #889c57);
+    background-size: 400% 400%;
+
+    -webkit-animation: RougeEtVert 30s ease infinite;
+    -moz-animation: RougeEtVert 30s ease infinite;
+    -o-animation: RougeEtVert 30s ease infinite;
+    animation: RougeEtVert 30s ease infinite;
+}
+
+.versLeTravail {
+    background: linear-gradient(180deg, #889c57, #910002);
+    background-size: 400% 400%;
+
+    -webkit-animation: VertEtRouge 30s ease infinite;
+    -moz-animation: VertEtRouge 30s ease infinite;
+    -o-animation: VertEtRouge 30s ease infinite;
+    animation: VertEtRouge 30s ease infinite;
+}
+
+.enPause {
+    background-color: #89894d;
+}
+
+
+
+
+
+
+
+
+@-webkit-keyframes RougeEtVert {
+    0% {background-position: 50% 0%}
+    50% {background-position: 51% 100%}
+    100% {background-position: 50% 0%}
+}
+
+@-moz-keyframes RougeEtVert {
+    0% {background-position: 50% 0%}
+    50% {background-position: 51% 100%}
+    100% {background-position: 50% 0%}
+}
+
+@-o-keyframes RougeEtVert {
+    0% {background-position: 50% 0%}
+    50% {background-position: 51% 100%}
+    100% {background-position: 50% 0%}
+}
+
+@keyframes RougeEtVert {
+    0% {background-position: 50% 0%}
+    50% { background-position: 51% 100%}
+    100% {background-position: 50% 0%}
+}
+
+
+@-webkit-keyframes VertEtRouge {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes VertEtRouge {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-o-keyframes VertEtRouge {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes VertEtRouge {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
 }
