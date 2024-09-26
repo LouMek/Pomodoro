@@ -1,5 +1,5 @@
 body {
-    background: #910002;
+    background: #a61510;
     display: flex;
     align-items: center;
     text-align: center;
@@ -57,13 +57,11 @@ body {
     width: 21rem;
     height: 21rem;
     border-radius: 50%;
-    background-color: aqua;
-
-    border: 1rem solid white;
-    -webkit-box-shadow: 0px 10px 13px -7px #ffffff68, 0px 0px 15px 10px rgba(255, 255, 255, 0.35);
-    box-shadow: 0px 10px 13px -7px #ffffff68, 0px 0px 15px 10px rgba(255, 255, 255, 0.35);
-
-}
+    background-color: #ab1510;
+    
+    border: 1px solid white;
+    -webkit-box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255, 255, 255, 0.5); 
+    box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255,255,255,0.5);}
 
 .temps {
     position: relative;
@@ -73,6 +71,7 @@ body {
 
 .temps p {
     font-size: 5rem;
+    color: white;
 }
 
 

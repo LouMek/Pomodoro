@@ -8,16 +8,16 @@ let pauseEnCours = document.getElementById('pause'); //On récupère l'élément
 
 let timerActif = false; //Afin de savoir si le timer est actif
 let timerPauseDepart = false;
-let lancementTimer;
+let lancementTimer = null;
 
 
 //Listener permettant de savoir si le bouton "lancer" est cliqué ou non
 lancer.addEventListener('click', function () {
-    if (timerActif == false) {
+    if (lancementTimer == null) {
         travailEnCours.classList.add('actionActive'); //Permet d'activer le visuel "Travail" dans le panel
         lancementTimer = setInterval(timer, 1000); //lance la fonction timer avec un interval de 1 seconde
     }
-    else {
+    else if(timerActif == true) {
         clearInterval(lancementTimer); //permet d'arreter le timer 
         lancementTimer = null;
         timerActif = false;
@@ -33,28 +33,37 @@ function timer() {
     let minutes = parseInt(travailMinutes.innerHTML); //On récupère les minutes
     let secondes = parseInt(travailSecondes.innerHTML); //On récupère les secondes
 
+
     if (timerPauseDepart == true) {
-        travailMinutes.innerHTML = "0";
-        travailSecondes.innerHTML = "05";
+        timerPauseDepart == false;
+        //Permet de remettre la valeur de la pause afin de reswitch sur la partie travail (et donc switch les effets visuels)
     }
+
 
     if (minutes == 0 && secondes == 1) {
         if(timerPauseDepart == false){
-            travailSecondes.innerHTML = '0' + (secondes - 1);
             travailEnCours.classList.remove('actionActive'); //Modifi le panel
             pauseEnCours.classList.add('actionActive');
             document.body.classList.add('enPause'); //Change la couleur du Body en vert
+            travailMinutes.innerHTML = "00";
+            travailSecondes.innerHTML = "01";
             timerPauseDepart = true;
         }
         else{
             travailEnCours.classList.add('actionActive'); 
             pauseEnCours.classList.remove('actionActive');
             document.body.classList.remove('enPause'); 
-            travailMinutes.innerHTML = "25";
-            travailSecondes.innerHTML = "00";
+            travailMinutes.innerHTML = "00";
+            travailSecondes.innerHTML = "01";
             timerPauseDepart = false;
         }
         
+
+    }
+
+    else if (secondes == 0 && minutes > 0) {
+        travailSecondes.innerHTML = '59';
+        travailMinutes.innerHTML = '' + (minutes - 1);
     }
 
     else if (secondes > 0) {
@@ -62,11 +71,9 @@ function timer() {
             travailSecondes.innerHTML = '0' + (secondes - 1);
         }
         else {
-            travailSecondes.innerHTML = secondes - 1;
+            travailSecondes.innerHTML = '' + (secondes - 1);
         }
     }
-    else if (secondes == 0 && minutes > 0) {
-        travailSecondes.innerHTML = 59;
-        travailMinutes.innerHTML = minutes - 1;
-    }
+    
+
 }
