@@ -1,5 +1,6 @@
 body {
-    background: #910002;
+    transition: background-color 2.0s ease;
+    background-color: #910002;
 
     display: flex;
     align-items: center;
@@ -23,7 +24,6 @@ body {
     padding-left: 2%;
     padding-right: 2%;
     border-radius: 25px;
-    opacity: .5;
     font-size: 20px;
 
     font-family: "Fredoka", sans-serif;
@@ -38,6 +38,9 @@ body {
     border: 1px solid rgba(255, 255, 255, 1);
 }
 
+#etat {
+    color: #ffffff;
+}
 
 
 
@@ -50,15 +53,16 @@ body {
     border-radius: 50%;
 }
 
-.cercle {
+#cercle {
+    transition: background-color 2.0s ease;
+
+    background-color: #910002;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 21rem;
     height: 21rem;
     border-radius: 50%;
-    background-color: #910002;
-
     border: 1px solid white;
     -webkit-box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
     box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
@@ -97,79 +101,27 @@ h1 {
 
 /*Pour modifier le background d'une autre couleur lorsque l'on passe en pause*/
 
-.versLaPause {
-    background: linear-gradient(180deg, #910002, #889c57);
-    background-size: 400% 400%;
-
-    -webkit-animation: RougeEtVert 30s ease infinite;
-    -moz-animation: RougeEtVert 30s ease infinite;
-    -o-animation: RougeEtVert 30s ease infinite;
-    animation: RougeEtVert 30s ease infinite;
-}
-
-.versLeTravail {
-    background: linear-gradient(180deg, #889c57, #910002);
-    background-size: 400% 400%;
-
-    -webkit-animation: VertEtRouge 30s ease infinite;
-    -moz-animation: VertEtRouge 30s ease infinite;
-    -o-animation: VertEtRouge 30s ease infinite;
-    animation: VertEtRouge 30s ease infinite;
-}
-
 .enPause {
     background-color: #89894d;
 }
 
 
-
-
-
-
-
-
-@-webkit-keyframes RougeEtVert {
-    0% {background-position: 50% 0%}
-    50% {background-position: 51% 100%}
-    100% {background-position: 50% 0%}
+#cercle.enPause {
+    background-color: #89894d; 
 }
 
-@-moz-keyframes RougeEtVert {
-    0% {background-position: 50% 0%}
-    50% {background-position: 51% 100%}
-    100% {background-position: 50% 0%}
-}
-
-@-o-keyframes RougeEtVert {
-    0% {background-position: 50% 0%}
-    50% {background-position: 51% 100%}
-    100% {background-position: 50% 0%}
-}
-
-@keyframes RougeEtVert {
-    0% {background-position: 50% 0%}
-    50% { background-position: 51% 100%}
-    100% {background-position: 50% 0%}
-}
-
-
-@-webkit-keyframes VertEtRouge {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-@-moz-keyframes VertEtRouge {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-@-o-keyframes VertEtRouge {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-@keyframes VertEtRouge {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
+.boutons button {
+    margin: 5px;
+    padding: auto;
+    width: 60px;              
+    height: 60px;             
+    background-color: #ffffff;
+    border: none;              
+    border-radius: 50%;        
+    color: rgb(0, 0, 0);              
+    text-align: center;        
+    line-height: 60px;         
+    font-size: 18px;          
+    font-family: 'Fredoka', sans-serif; 
+    cursor: pointer;           
 }

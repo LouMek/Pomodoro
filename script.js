@@ -10,13 +10,13 @@ let timerEnPause = false;
 let lancementTimer = null;
 
 
-let cercle = document.querySelector('.cercle');
+let cercle = document.getElementById('cercle');
 
 
 //Listener permettant de savoir si le bouton "lancer" est cliqué ou non
 lancer.addEventListener('click', function () {
     if (lancementTimer == null) {
-        document.body.classList.remove('enPause');
+
         etatEnCours.innerHTML = "Travail en cours";
         lancementTimer = setInterval(timer, 1000); //lance la fonction timer avec un interval de 1 seconde
     }
@@ -24,18 +24,13 @@ lancer.addEventListener('click', function () {
         clearInterval(lancementTimer); //permet d'arreter le timer 
         lancementTimer = null;
         timerActif = false;
-        etatEnCours.innerHTML = "Lancer le timer";
+        etatEnCours.innerHTML = "Le timer n'est pas active";
         travailMinutes.innerHTML = "25"; //remet le timer à 25minutes
         travailSecondes.innerHTML = "00";
 
-
         document.body.classList.remove('enPause');
-        document.body.classList.remove('versLeTravail');
-        document.body.classList.remove('versLaPause');
+        cercle.classList.remove('enPause');
 
-        cercle.body.classList.remove('enPause');
-        cercle.body.classList.remove('versLeTravail');
-        cercle.body.classList.remove('versLaPause');
     }
 
 })
@@ -46,36 +41,29 @@ function timer() {
     let minutes = parseInt(travailMinutes.innerHTML); //On récupère les minutes
     let secondes = parseInt(travailSecondes.innerHTML); //On récupère les secondes
 
-    // if (timerPauseDepart == true) {
-    //     timerPauseDepart == false;
-    // }
-
     if (minutes == 0 && secondes == 0) {
         if (timerEnPause == false) {
+            timerEnPause = true;
             etatEnCours.innerHTML = "Pause en cours";
 
             travailMinutes.innerHTML = "00";
-            travailSecondes.innerHTML = "18";
-            timerEnPause = true;
+            travailSecondes.innerHTML = "3";
 
-            cercle.classList.add('enPause');
             document.body.classList.add('enPause');
+            cercle.classList.add('enPause');
 
-            cercle.classList.remove('versLaPause');
-            document.body.classList.remove('versLaPause');
+
         }
-        else {
+        else if(timerEnPause == true){
+            timerEnPause = false;
             etatEnCours.innerHTML = "Travail en cours";
 
             travailMinutes.innerHTML = "00";
-            travailSecondes.innerHTML = "18";
-            timerEnPause = false;
+            travailSecondes.innerHTML = "4";
 
-            cercle.classList.remove('enPause');
             document.body.classList.remove('enPause');
+            cercle.classList.remove('enPause');
 
-            cercle.body.classList.remove('versLeTravail');
-            document.body.classList.remove('versLeTravail');
         }
     }
 
@@ -99,15 +87,8 @@ function timer() {
         }
     }
 
-    if (secondes == 10 && minutes == 0 && etatEnCours.innerHTML == "Travail en cours") {
-        document.body.classList.add('versLaPause');
-        cercle.classList.add('versLaPause');
-    }
 
-    if (secondes == 10 && minutes == 0 && etatEnCours.innerHTML == "Pause en cours") {
-        document.body.classList.add('versLeTravail');
-        cercle.classList.add('versLeTravail');
-    }
+
 
 
 }

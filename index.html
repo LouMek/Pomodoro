@@ -5,9 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pomodoro</title>
-    <meta name="description" content="">
+
+    <meta name="description" content="Pomodoro avec session 25min travail - 5min pause, modifiable.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.ico" type="image/x-icon">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,21 +21,24 @@
 
 <body>
     <div class="pomodoro">
-        <h1> Timer Pomodoro </h1>
+        <h1> Pomodoro Timer </h1>
 
         <div class="action">
-            <p id="etat">Lancer le timer</p>
+            <p id="etat">Le timer n'est pas active</p>
         </div>
         <div class="timer">
-            <div class="cercle">
+            <div id="cercle">
                 <div class="temps">
                     <p id="minutes">00</p>
                     <p>:</p>
-                    <p id="secondes">18</p>
+                    <p id="secondes">02</p>
                 </div>
             </div>
         </div>
-        <button id="lancer">Play</button>
+        <div class="boutons">
+            <button id="lancer">Play</button>
+            <button id="why not"> oui </button>
+        </div>
 
     </div>
 
