@@ -16,8 +16,8 @@ let cercle = document.getElementById('cercle');
 //Listener permettant de savoir si le bouton "lancer" est cliqué ou non
 lancer.addEventListener('click', function () {
     if (lancementTimer == null) {
-
         etatEnCours.innerHTML = "Travail en cours";
+        lancer.innerHTML = '<i class="fas fa-pause"></i>'
         lancementTimer = setInterval(timer, 1000); //lance la fonction timer avec un interval de 1 seconde
     }
     else if (timerActif == true) {
@@ -31,12 +31,12 @@ lancer.addEventListener('click', function () {
         document.body.classList.remove('enPause');
         cercle.classList.remove('enPause');
 
+        lancer.innerHTML = '<i class="fa-solid fa-play"></i>';
     }
 
 })
 
 function timer() {
-
     timerActif = true;
     let minutes = parseInt(travailMinutes.innerHTML); //On récupère les minutes
     let secondes = parseInt(travailSecondes.innerHTML); //On récupère les secondes
@@ -52,9 +52,8 @@ function timer() {
             document.body.classList.add('enPause');
             cercle.classList.add('enPause');
 
-
         }
-        else if(timerEnPause == true){
+        else if (timerEnPause == true) {
             timerEnPause = false;
             etatEnCours.innerHTML = "Travail en cours";
 
@@ -63,7 +62,6 @@ function timer() {
 
             document.body.classList.remove('enPause');
             cercle.classList.remove('enPause');
-
         }
     }
 
