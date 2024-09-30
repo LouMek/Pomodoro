@@ -3,19 +3,19 @@ let boutonConfigurer = document.getElementById('configurer'); //Variable bouton 
 let boutonQuitterFormulaire = document.getElementById('quitter'); //Variable bouton boutonConfigurer
 let boutonValiderFormulaire = document.getElementById('valider');
 
-let minutesTravail = 25;
+let minutesTravail = 25; //Valeurs par défaut
 let secondesTravail = 0;
 let minutesPause = 5;
 let secondesPause = 0;
 
-let TempsTravailMinutes = document.getElementById('minutes'); //Balise p de la page HTML contenant les minutes
-let tempsTravailSecondes = document.getElementById('secondes'); //Balise p de la page HTML contenant les secondes
+let tempsMinutes = document.getElementById('minutes'); //Balise p de la page HTML contenant les minutes
+let tempsSecondes = document.getElementById('secondes'); //Balise p de la page HTML contenant les secondes
 
 let etatEnCours = document.getElementById('etat'); //On récupère l'élément d'ID 'etat' afin de dire lorsqu'on est en temps de pause/travail
 let cercleTimer = document.getElementById('cercle'); //On récupère l'élément d'ID 'cercle', afin de pouvoir afficher le cercle différement dans le futur 
 
 let timerActif = false; //Afin de savoir si le timer est actif
-let timerEnPause = false;
+let timerEnPause;
 let lancementTimer = null;
 
 let formulaire = document.getElementById('boxFormulaire');
@@ -53,10 +53,9 @@ boutonValiderFormulaire.addEventListener('click', function(event) {
     minutesPause = parseInt(document.getElementById('minutesPause').value);
     secondesPause = parseInt(document.getElementById('secondesPause').value);
 
-    TempsTravailMinutes.innerHTML = minutesTravail;
-    tempsTravailSecondes.innerHTML = secondesTravail;    
-    TempsTravailMinutes.innerHTML = minutesPause;
-    tempsTravailSecondes.innerHTML = secondesPause;
+    tempsMinutes.innerHTML = minutesTravail;
+    tempsSecondes.innerHTML = secondesTravail;    
+
 
     document.getElementById('pomodoro').style.display = 'flex';
     document.getElementById('formulaire').style.display = 'none';
@@ -66,9 +65,10 @@ boutonValiderFormulaire.addEventListener('click', function(event) {
 //S'active lorsque le bouton "Lancer" du formulaire est cliqué; active donc le chronomètre
 boutonLancer.addEventListener('click', function () {
     if (lancementTimer == null) {
+        timerEnPause = false;
         etatEnCours.innerHTML = "Travail en cours";
         boutonLancer.innerHTML = '<i class="fa-solid fa-rotate-right"></i>' //Pour changer l'aspect du bouton
-        lancementTimer = setInterval(timer, 1000); //lance la fonction timer avec un interval de 1 seconde
+        lancementTimer = setInterval(timer, 10); //lance la fonction timer avec un interval de 1 seconde
     }
     else if (timerActif == true) {
         resetTimer();
@@ -78,16 +78,16 @@ boutonLancer.addEventListener('click', function () {
 
 function timer() {
     timerActif = true;
-    let minutes = parseInt(TempsTravailMinutes.innerHTML); //On récupère les minutes
-    let secondes = parseInt(tempsTravailSecondes.innerHTML); //On récupère les secondes
+    let minutes = parseInt(tempsMinutes.innerHTML); //On récupère les minutes
+    let secondes = parseInt(tempsSecondes.innerHTML); //On récupère les secondes
 
     if (minutes == 0 && secondes == 0) {
         if (timerEnPause == false) {
             timerEnPause = true;
             etatEnCours.innerHTML = "Pause en cours";
 
-            TempsTravailMinutes.innerHTML = minutesTravail;
-            tempsTravailSecondes.innerHTML = secondesTravail;
+            tempsMinutes.innerHTML = minutesPause;
+            tempsSecondes.innerHTML = secondesPause;
 
             document.body.classList.add('enPause');
             cercleTimer.classList.add('enPause');
@@ -97,8 +97,8 @@ function timer() {
             timerEnPause = false;
             etatEnCours.innerHTML = "Travail en cours";
 
-            TempsTravailMinutes.innerHTML = minutesPause;
-            tempsTravailSecondes.innerHTML = secondesPause;
+            tempsMinutes.innerHTML = minutesTravail;
+            tempsSecondes.innerHTML = secondesTravail;
 
             document.body.classList.remove('enPause');
             cercleTimer.classList.remove('enPause');
@@ -106,22 +106,22 @@ function timer() {
     }
 
     else if (secondes == 0 && minutes > 0) {
-        tempsTravailSecondes.innerHTML = '59';
+        tempsSecondes.innerHTML = '59';
         if (minutes < 11) {
-            TempsTravailMinutes.innerHTML = '0' + (minutes - 1);
+            tempsMinutes.innerHTML = '0' + (minutes - 1);
         }
         else {
-            TempsTravailMinutes.innerHTML = '' + (minutes - 1);
+            tempsMinutes.innerHTML = '' + (minutes - 1);
         }
 
     }
 
     else if (secondes > 0) {
         if (secondes < 11) {
-            tempsTravailSecondes.innerHTML = '0' + (secondes - 1);
+            tempsSecondes.innerHTML = '0' + (secondes - 1);
         }
         else {
-            tempsTravailSecondes.innerHTML = '' + (secondes - 1);
+            tempsSecondes.innerHTML = '' + (secondes - 1);
         }
     }
 }
@@ -133,8 +133,8 @@ function resetTimer() {
     timerActif = false;
 
     etatEnCours.innerHTML = "Le timer n'est pas activé";
-    TempsTravailMinutes.innerHTML = "25"; //remet le timer à 25minutes
-    tempsTravailSecondes.innerHTML = "00";
+    tempsMinutes.innerHTML = minutesTravail; //remet le timer par défaut (25 si l'utilisateur n'a pas configuré)
+    tempsSecondes.innerHTML = secondesTravail;
 
     document.body.classList.remove('enPause');
     cercleTimer.classList.remove('enPause');
