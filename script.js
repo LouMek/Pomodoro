@@ -44,8 +44,8 @@ boutonQuitterFormulaire.addEventListener('click', function () {
 //S'active lorsque le bouton "Valider" du formulaire est cliqué 
 //Permet de choisir le temps de travail et de pause en récupèrant les valeurs des input, 
 //et en les mettants dans les variables correspondantes.
-boutonValiderFormulaire.addEventListener('click', function(event) {
-    event.preventDefault(); 
+boutonValiderFormulaire.addEventListener('click', function (event) {
+    event.preventDefault();
 
 
     minutesTravail = parseInt(document.getElementById('minutesTravail').value);
@@ -53,8 +53,10 @@ boutonValiderFormulaire.addEventListener('click', function(event) {
     minutesPause = parseInt(document.getElementById('minutesPause').value);
     secondesPause = parseInt(document.getElementById('secondesPause').value);
 
+    conditionTemps();
+
     tempsMinutes.innerHTML = minutesTravail;
-    tempsSecondes.innerHTML = secondesTravail;    
+    tempsSecondes.innerHTML = secondesTravail;
 
 
     document.getElementById('pomodoro').style.display = 'flex';
@@ -68,7 +70,7 @@ boutonLancer.addEventListener('click', function () {
         timerEnPause = false;
         etatEnCours.innerHTML = "Travail en cours";
         boutonLancer.innerHTML = '<i class="fa-solid fa-rotate-right"></i>' //Pour changer l'aspect du bouton
-        lancementTimer = setInterval(timer, 10); //lance la fonction timer avec un interval de 1 seconde
+        lancementTimer = setInterval(timer, 1000); //lance la fonction timer avec un interval de 1 seconde
     }
     else if (timerActif == true) {
         resetTimer();
@@ -141,3 +143,51 @@ function resetTimer() {
 
     boutonLancer.innerHTML = '<i class="fa-solid fa-play"></i>';
 }
+
+
+
+
+function conditionTemps() {
+    //Minimum du temps de travail = 5 minutes
+    if (minutesTravail < 5) {
+        minutesTravail = 5;
+    }
+
+    //Minimum temps pause = 2.30 minutes
+    if (minutesPause <= 2 && secondesPause < 30) {
+        minutesPause = 2;
+        minutesTravail = 30;
+    }
+
+    //Maximum du temps de travail = 120 minutes
+    if (minutesTravail > 120) {
+        minutesTravail = 120;
+    }
+
+    //Maximum du temps de pause = 60 minutes
+    if (minutesPause > 60) {
+        minutesPause = 60;
+    }
+
+    //Pour ne pas mettre au dessus de 60 secondes 
+    if (secondesPause > 59 || secondesTravail > 59) {
+        secondesPause = 59;
+        secondesTravail = 59;
+    }
+
+    if(isNaN(minutesTravail)){
+        minutesTravail = 25;
+    }
+    if(isNaN(secondesTravail)){
+        secondesTravail = 0;
+    }
+    if(isNaN(minutesPause)){
+        minutesPause = 5;
+    }
+    if(isNaN(secondesPause)){
+        secondesPause = 0;
+    }
+
+
+}
+
