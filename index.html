@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div class="pomodoro">
+    <div id="pomodoro">
         <h1> Pomodoro Timer </h1>
 
         <div class="action">
@@ -38,10 +38,29 @@
             </div>
         </div>
         <div class="boutons">
-            <button id="lancer"><i class="fa-solid fa-play"></i></button>
-            <button id="why not"><i class="fa-solid fa-gear"></i></button>
+            <button id="lancer" title="Cliquez pour lancer/stopper le timer"><i class="fa-solid fa-play"></i></button>
+            <button id="configurer" title="Cliquez pour configurer le timer"><i class="fa-solid fa-gear"></i></button>
         </div>
+    </div>
 
+    <div id="formulaire">
+        <h1> Pomodoro Timer </h1>
+
+        <div class="boutons">
+            <button id="quitter" title="Cliquez pour valider et quitter"><i class="fa-solid fa-gear"></i></button>
+
+            <form id="config-form">
+                <input type="number" id="minutesTravail" min="5" max="120" placeholder="00">
+                <input type="number" id="secondesTravail"  min="0" max="59" placeholder="00">
+
+                
+                <input type="number" id="minutesPause" name="break-time" min="1" max="30" placeholder="00">
+                <input type="number" id="secondesPause" name="work-time" min="5" max="120" placeholder="00">
+
+                
+            </form>
+
+        </div>
     </div>
 
 

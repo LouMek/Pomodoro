@@ -1,9 +1,14 @@
 let lancer = document.getElementById('lancer'); //Variable bouton lancer
+let configurer = document.getElementById('configurer'); //Variable bouton configurer
+let quitter = document.getElementById('quitter'); //Variable bouton configurer
+
+
 
 let travailMinutes = document.getElementById('minutes'); //Balise p contenant les minutes
 let travailSecondes = document.getElementById('secondes'); //Balise p contenant les secondes
 
 let etatEnCours = document.getElementById('etat'); //On récupère l'élément d'ID 'travail' 
+let pomodoro = document.getElementById('pomodoro')
 
 let timerActif = false; //Afin de savoir si le timer est actif
 let timerEnPause = false;
@@ -11,6 +16,32 @@ let lancementTimer = null;
 
 
 let cercle = document.getElementById('cercle');
+
+configurer.addEventListener('click', function(){
+    document.getElementById('pomodoro').style.display = 'none';
+    document.getElementById('formulaire').style.display = 'flex';
+
+
+    if (timerActif == true) {
+        clearInterval(lancementTimer); //permet d'arreter le timer 
+        lancementTimer = null;
+        timerActif = false;
+        etatEnCours.innerHTML = "Le timer n'est pas active";
+        travailMinutes.innerHTML = "25"; //remet le timer à 25minutes
+        travailSecondes.innerHTML = "00";
+
+        document.body.classList.remove('enPause');
+        cercle.classList.remove('enPause');
+
+        lancer.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
+})
+
+
+quitter.addEventListener('click', function(){
+    document.getElementById('pomodoro').style.display = 'flex';
+    document.getElementById('formulaire').style.display = 'none';
+})
 
 
 //Listener permettant de savoir si le bouton "lancer" est cliqué ou non
