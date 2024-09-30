@@ -26,7 +26,7 @@
         <h1> Pomodoro Timer </h1>
 
         <div class="action">
-            <p id="etat">Le timer n'est pas active</p>
+            <p id="etat">Le timer n'est pas activé</p>
         </div>
         <div class="timer">
             <div id="cercle">
@@ -46,20 +46,19 @@
     <div id="formulaire">
         <h1> Pomodoro Timer </h1>
 
+
+        <form id="boxFormulaire">
+            <input type="number" id="minutesTravail" name="minutesTravail" min="5" max="120" placeholder="25">
+            <input type="number" id="secondesTravail" name="secondesTravail" min="0" max="59" placeholder="00">
+
+
+            <input type="number" id="minutesPause" name="break-time" min="1" max="30" placeholder="05">
+            <input type="number" id="secondesPause" name="work-time" min="5" max="120" placeholder="00">
+        </form>
+
         <div class="boutons">
-            <button id="quitter" title="Cliquez pour valider et quitter"><i class="fa-solid fa-gear"></i></button>
-
-            <form id="config-form">
-                <input type="number" id="minutesTravail" min="5" max="120" placeholder="00">
-                <input type="number" id="secondesTravail"  min="0" max="59" placeholder="00">
-
-                
-                <input type="number" id="minutesPause" name="break-time" min="1" max="30" placeholder="00">
-                <input type="number" id="secondesPause" name="work-time" min="5" max="120" placeholder="00">
-
-                
-            </form>
-
+            <button id="valider" title="Cliquez pour valider et quitter"><i class="fa-solid fa-check"></i></button>
+            <button id="quitter" title="Cliquez pour quitter sans valider"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         </div>
     </div>
 
