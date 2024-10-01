@@ -3,10 +3,10 @@ let boutonConfigurer = document.getElementById('configurer'); //Variable bouton 
 let boutonQuitterFormulaire = document.getElementById('quitter'); //Variable bouton boutonConfigurer
 let boutonValiderFormulaire = document.getElementById('valider');
 
-let minutesTravail = 25; //Valeurs par défaut
-let secondesTravail = 0;
-let minutesPause = 5;
-let secondesPause = 0;
+let minutesTravail = '25'; //Valeurs par défaut
+let secondesTravail = '00';
+let minutesPause = '5';
+let secondesPause = '00';
 
 let tempsMinutes = document.getElementById('minutes'); //Balise p de la page HTML contenant les minutes
 let tempsSecondes = document.getElementById('secondes'); //Balise p de la page HTML contenant les secondes
@@ -145,14 +145,11 @@ function resetTimer() {
 }
 
 
-
-
 function conditionTemps() {
     //Minimum du temps de travail = 5 minutes
     if (minutesTravail < 5) {
         minutesTravail = 5;
     }
-
     //Minimum temps pause = 2.30 minutes
     if (minutesPause <= 2 && secondesPause < 30) {
         minutesPause = 2;
@@ -163,31 +160,48 @@ function conditionTemps() {
     if (minutesTravail > 120) {
         minutesTravail = 120;
     }
-
     //Maximum du temps de pause = 60 minutes
     if (minutesPause > 60) {
         minutesPause = 60;
     }
 
+
     //Pour ne pas mettre au dessus de 60 secondes 
-    if (secondesPause > 59 || secondesTravail > 59) {
-        secondesPause = 59;
-        secondesTravail = 59;
+    if(secondesPause > 59) {
+        secondesPause = '59';
+    }
+    if(secondesTravail > 59) {
+        secondesTravail = '59';
+    }
+    //Pour ne pas mettre en dessous de 0 secondes
+    if(secondesPause < 0) {
+        secondesPause = '00';
+    }
+    if(secondesTravail < 0) {
+        secondesTravail = '00';
     }
 
     if(isNaN(minutesTravail)){
-        minutesTravail = 25;
+        minutesTravail = '25';
     }
     if(isNaN(secondesTravail)){
-        secondesTravail = 0;
+        secondesTravail = '00';
     }
     if(isNaN(minutesPause)){
-        minutesPause = 5;
+        minutesPause = '05';
     }
     if(isNaN(secondesPause)){
-        secondesPause = 0;
+        secondesPause = '00';
     }
-
 
 }
 
+//Pour ajouter des 0 devant les secondes lorsqu'elles sont en dessous de 10
+function affichageZeroSecondes(){
+    if(secondesTravail < 10 && secondesTravail.length <= 1){
+        secondesTravail = '0' + secondesTravail;
+    }
+    if(secondesPause < 10 && secondesPause.length <= 1){
+        secondesPause = '0' + secondesPause;
+    }
+}
