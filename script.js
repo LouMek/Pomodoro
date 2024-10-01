@@ -3,10 +3,10 @@ let boutonConfigurer = document.getElementById('configurer'); //Variable bouton 
 let boutonQuitterFormulaire = document.getElementById('quitter'); //Variable bouton boutonConfigurer
 let boutonValiderFormulaire = document.getElementById('valider');
 
-let minutesTravail = '25'; //Valeurs par défaut
-let secondesTravail = '00';
-let minutesPause = '5';
-let secondesPause = '00';
+let minutesTravail = 25; //Valeurs par défaut
+let secondesTravail = 0;
+let minutesPause = 5;
+let secondesPause = 0;
 
 let tempsMinutes = document.getElementById('minutes'); //Balise p de la page HTML contenant les minutes
 let tempsSecondes = document.getElementById('secondes'); //Balise p de la page HTML contenant les secondes
@@ -54,10 +54,10 @@ boutonValiderFormulaire.addEventListener('click', function (event) {
     secondesPause = parseInt(document.getElementById('secondesPause').value);
 
     conditionTemps();
+    affichageZeroSecondes();
 
     tempsMinutes.innerHTML = minutesTravail;
     tempsSecondes.innerHTML = secondesTravail;
-
 
     document.getElementById('pomodoro').style.display = 'flex';
     document.getElementById('formulaire').style.display = 'none';
@@ -70,7 +70,7 @@ boutonLancer.addEventListener('click', function () {
         timerEnPause = false;
         etatEnCours.innerHTML = "Travail en cours";
         boutonLancer.innerHTML = '<i class="fa-solid fa-rotate-right"></i>' //Pour changer l'aspect du bouton
-        lancementTimer = setInterval(timer, 1000); //lance la fonction timer avec un interval de 1 seconde
+        lancementTimer = setInterval(timer, 10); //lance la fonction timer avec un interval de 1 seconde
     }
     else if (timerActif == true) {
         resetTimer();
@@ -83,6 +83,10 @@ function timer() {
     let minutes = parseInt(tempsMinutes.innerHTML); //On récupère les minutes
     let secondes = parseInt(tempsSecondes.innerHTML); //On récupère les secondes
 
+
+    /*Si le timer arrive au changement d'état; si jamais "timerEnPause vaut false, alors on passe en état de pause
+    en pensant à bien modifier la varible. Pour cela on ajoute la classe "enPause" afin de faire le changement de couleur
+    ainsi que le temps, qu'on définit au temps mit pour la pause*/
     if (minutes == 0 && secondes == 0) {
         if (timerEnPause == false) {
             timerEnPause = true;
@@ -149,6 +153,7 @@ function conditionTemps() {
     //Minimum du temps de travail = 5 minutes
     if (minutesTravail < 5) {
         minutesTravail = 5;
+        secondesTravail = 0
     }
     //Minimum temps pause = 2.30 minutes
     if (minutesPause <= 2 && secondesPause < 30) {
@@ -168,40 +173,39 @@ function conditionTemps() {
 
     //Pour ne pas mettre au dessus de 60 secondes 
     if(secondesPause > 59) {
-        secondesPause = '59';
+        secondesPause = 59;
     }
     if(secondesTravail > 59) {
-        secondesTravail = '59';
+        secondesTravail = 59;
     }
     //Pour ne pas mettre en dessous de 0 secondes
     if(secondesPause < 0) {
-        secondesPause = '00';
+        secondesPause = 0;
     }
     if(secondesTravail < 0) {
-        secondesTravail = '00';
+        secondesTravail = 0;
     }
 
     if(isNaN(minutesTravail)){
-        minutesTravail = '25';
+        minutesTravail = 25;
     }
     if(isNaN(secondesTravail)){
-        secondesTravail = '00';
+        secondesTravail = 0;
     }
     if(isNaN(minutesPause)){
-        minutesPause = '05';
+        minutesPause = 5;
     }
     if(isNaN(secondesPause)){
-        secondesPause = '00';
+        secondesPause = 0;
     }
-
 }
 
-//Pour ajouter des 0 devant les secondes lorsqu'elles sont en dessous de 10
 function affichageZeroSecondes(){
-    if(secondesTravail < 10 && secondesTravail.length <= 1){
+    //Pour ajouter des 0 devant les secondes lorsqu'elles sont en dessous de 10
+    if(secondesTravail < 10){
         secondesTravail = '0' + secondesTravail;
     }
-    if(secondesPause < 10 && secondesPause.length <= 1){
+    if(secondesPause < 10 ){
         secondesPause = '0' + secondesPause;
     }
 }

@@ -22,7 +22,7 @@ body {
 input{
     text-align: center;
     color: white;
-    width: 100px; 
+    width: 80px; 
     height: 40px; 
     padding: 8px; 
     margin: 5px; 
@@ -69,7 +69,7 @@ input::placeholder{
     background: rgba(255, 255, 255, 0.21);
     backdrop-filter: blur(6.8px);
     -webkit-backdrop-filter: blur(6.8px);
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 #etat {
@@ -100,6 +100,7 @@ input::placeholder{
     border: 1px solid white;
     -webkit-box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
     box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #ffffff, 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
 }
 
 .temps {
@@ -133,12 +134,14 @@ h1 {
 /*Pour modifier le background d'une autre couleur lorsque l'on passe en pause*/
 
 .enPause {
+    transition: background-color 2.0s ease;
     background-color: #89894d;
 }
 
 
 #cercle.enPause {
-    background-color: #89894d; 
+    transition: background-color 2.0s ease;
+    background-color: rgb(137, 137, 77); 
 }
 
 .boutons button {
@@ -155,3 +158,19 @@ h1 {
 }
 
 
+.paragrapheFormulaire {
+    font-size: 1.5rem; 
+    font-family: "Fredoka", sans-serif; 
+    color: white; 
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.formulaireInformations {
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 15px; 
+    padding: 20px; 
+    margin: 20px auto; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
