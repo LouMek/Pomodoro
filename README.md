@@ -2,7 +2,7 @@
 
 ## Description
 
-Ceci est un projet fait en cours durant l'année 2024-2025, mettant en place un **Pomodoro Timer**, permettant à l'utilisateur d'alterner des sessions de travail et de pause. L'utilisateur à la possibilité de configurer la durée de travail ainsi que de pause.
+Ceci est un projet, fait  par Louisa Mekhelef, pour les cours, durant l'année 2024-2025, mettant en place un **Pomodoro Timer**, permettant à l'utilisateur d'alterner des sessions de travail et de pause. L'utilisateur à la possibilité de configurer la durée de travail ainsi que de pause.
 
 ## Fonctionnalités
 
