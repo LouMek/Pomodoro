@@ -75,13 +75,14 @@ boutonLancer.addEventListener('click', function () {
         timerEnPause = false;
         etatEnCours.innerHTML = "Travail en cours";
         boutonLancer.innerHTML = '<i class="fa-solid fa-rotate-right"></i>' //Pour changer l'aspect du bouton
-        lancementTimer = setInterval(timer, 10); //lance la fonction timer avec un interval de 1 seconde
+        lancementTimer = setInterval(timer, 1000); //lance la fonction timer avec un interval de 1 seconde
     }
     else if (timerActif == true) {
         resetTimer();
     }
 
 })
+
 
 function timer() {
     timerActif = true;
@@ -152,7 +153,7 @@ function resetTimer() {
 
     etatEnCours.innerHTML = "Le timer n'est pas activé";
 
-    affichageZeroSecondes();
+
     tempsMinutes.innerHTML = minutesTravail; //remet le timer par défaut (25 si l'utilisateur n'a pas configuré)
     tempsSecondes.innerHTML = secondesTravail;
 
@@ -173,9 +174,8 @@ function conditionTemps() {
         secondesTravail = 0
     }
     //Minimum temps pause = 2.30 minutes
-    if (minutesPause <= 2 && secondesPause < 30) {
-        minutesPause = 2;
-        secondesPause = 30;
+    if (minutesPause <= 3) {
+        minutesPause = 3;
     }
 
     //Maximum du temps de travail = 120 minutes
@@ -220,24 +220,24 @@ function conditionTemps() {
     }
 }
 
+
 /* La fonction permet de rendre l'affichage des secondes < 10 plus agréable (lors de l'initialisation du timer)
 */
 function affichageZeroSecondes() {
     //Pour ajouter des 0 devant les secondes lorsqu'elles sont en dessous de 10
     if (secondesTravail < 10) {
-        secondesTravail = "0" + secondesTravail;
-        //console.log(secondesTravail.innerHTML);
-    }
-    if (secondesPause < 10) {
-        secondesPause = "0" + secondesPause;
+        secondesTravail = '0' + secondesTravail;
     }
 
     if (minutesTravail < 10) {
-        minutesTravail = "0" + minutesTravail;
-        //console.log(secondesTravail.innerHTML);
+        minutesTravail = '0' + minutesTravail;
     }
+    if (secondesPause < 10) {
+        secondesPause = '0' + secondesPause;
+    }
+
     if (minutesPause < 10) {
-        minutesPause = "0" + minutesPause;
+        minutesPause = '0' + minutesPause;
     }
 }
 
